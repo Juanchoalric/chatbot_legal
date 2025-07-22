@@ -1,0 +1,1911 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Plan Estratégico: Aplicación de Chat LLM para Estudios Jurídicos Argentinos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        .font-serif { font-family: 'Crimson Text', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        body {
+            overflow-x: hidden;
+        }
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.8) 100%);
+        }
+        .citation-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.875rem;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+        .citation-link:hover {
+            color: #6b7280;
+        }
+        .sidebar-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background: #1f2937;
+            z-index: 1000;
+            overflow-y: auto;
+            border-right: 1px solid #374151;
+        }
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        .nav-link {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #d1d5db;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            background: rgba(55, 65, 81, 0.5);
+            border-left-color: #f59e0b;
+            color: #f9fafb;
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #374151, transparent);
+            margin: 3rem 0;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .bento-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .metric-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .quote-highlight {
+            border-left: 4px solid #f59e0b;
+            background: rgba(245, 158, 11, 0.05);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 0.75rem;
+            border: 1px solid #374151;
+        }
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(31, 41, 55, 0.8);
+        }
+        .table-container th {
+            background: #374151;
+            color: #f9fafb;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .table-container td {
+            padding: 1rem;
+            border-bottom: 1px solid #374151;
+            color: #d1d5db;
+        }
+        .table-container tr:hover {
+            background: rgba(55, 65, 81, 0.3);
+        }
+        
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .mermaid-container {
+                padding: 30px;
+                margin: 30px 0;
+            }
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(31, 41, 55, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #d1d5db;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #374151;
+            border-color: #4b5563;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Custom mermaid theme for better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            fill: #1f2937 !important;
+            stroke: #f59e0b !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node .label {
+            color: #f8fafc !important;
+            font-weight: 500 !important;
+            font-size: 14px !important;
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: #f59e0b !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: #1f2937 !important;
+            color: #f8fafc !important;
+            border: 1px solid #f59e0b !important;
+            border-radius: 4px !important;
+            padding: 4px 8px !important;
+            font-weight: 500 !important;
+        }
+        
+        .mermaid .cluster rect {
+            fill: rgba(55, 65, 81, 0.3) !important;
+            stroke: #6b7280 !important;
+            stroke-width: 1px !important;
+        }
+        
+        .mermaid .cluster .label {
+            color: #f8fafc !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Different node colors with proper contrast */
+        .mermaid .node.start rect,
+        .mermaid .node.start circle,
+        .mermaid .node.start ellipse,
+        .mermaid .node.start polygon {
+            fill: #059669 !important;
+            stroke: #10b981 !important;
+        }
+        
+        .mermaid .node.end rect,
+        .mermaid .node.end circle,
+        .mermaid .node.end ellipse,
+        .mermaid .node.end polygon {
+            fill: #dc2626 !important;
+            stroke: #ef4444 !important;
+        }
+        
+        .mermaid .node.process rect,
+        .mermaid .node.process circle,
+        .mermaid .node.process ellipse,
+        .mermaid .node.process polygon {
+            fill: #1f2937 !important;
+            stroke: #f59e0b !important;
+        }
+        
+        .mermaid .node.decision rect,
+        .mermaid .node.decision circle,
+        .mermaid .node.decision ellipse,
+        .mermaid .node.decision polygon {
+            fill: #7c3aed !important;
+            stroke: #a855f7 !important;
+        }
+
+    @media (max-width: 1024px) {
+        .sidebar-nav {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .sidebar-nav.open {
+            transform: translateX(0);
+        }
+        .main-content {
+            margin-left: 0;
+        }
+        .mermaid-control-btn:not(.reset-zoom) {
+            display: none;
+        }
+        .mermaid-controls {
+            top: auto;
+            bottom: 15px;
+            right: 15px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bento-grid {
+            grid-template-columns: 1fr;
+        }
+        .mermaid-container {
+            padding: 15px;
+        }
+        #executive-summary .grid {
+            grid-template-columns: 1fr;
+        }
+        #market-research .grid {
+            grid-template-columns: 1fr;
+        }
+        #implementation-roadmap .grid {
+            grid-template-columns: 1fr;
+        }
+        #risk-analysis .grid {
+            grid-template-columns: 1fr;
+        }
+        #conclusion .grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
+  </head>
+
+  <body class="bg-gray-900 text-gray-100 font-sans">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav">
+      <div class="p-6 border-b border-gray-700">
+        <h2 class="text-xl font-bold text-white">Índice</h2>
+      </div>
+      <div class="py-4">
+        <a href="#executive-summary" class="nav-link">Resumen Ejecutivo</a>
+        <a href="#market-research" class="nav-link">Investigación de Mercado</a>
+        <a href="#model-selection" class="nav-link">Selección de Modelos LLM</a>
+        <a href="#fine-tuning" class="nav-link">Fine-Tuning y Entrenamiento</a>
+        <a href="#application-development" class="nav-link">Desarrollo de la Aplicación</a>
+        <a href="#privacy-security" class="nav-link">Privacidad y Seguridad</a>
+        <a href="#regulatory-compliance" class="nav-link">Cumplimiento Normativo</a>
+        <a href="#quality-evaluation" class="nav-link">Evaluación de Calidad</a>
+        <a href="#implementation-roadmap" class="nav-link">Plan de Implementación</a>
+        <a href="#risk-analysis" class="nav-link">Análisis de Riesgos</a>
+        <a href="#conclusion" class="nav-link">Conclusión</a>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button id="mobile-menu-toggle" class="fixed top-4 left-4 z-1100 lg:hidden bg-gray-800 p-2 rounded-lg text-white">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Overlay for mobile menu -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-1050 hidden lg:hidden"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/a5905af8ab4fc9421a852c3cc66bbc46c69a6aef.JPG" alt="Edificio de la Corte Suprema de Argentina con efecto de profundidad de campo" class="w-full h-full object-cover opacity-20" size="wallpaper" aspect="wide" style="photo" query="Corte Suprema de Argentina edificio exterior" referrerpolicy="no-referrer" data-modified="1" data-score="11599.00"/>
+          <div class="gradient-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 py-20">
+          <div class="max-w-4xl">
+            <h1 class="hero-title font-serif italic mb-8">
+              Plan Estratégico para una Aplicación de Chat LLM en el Sector Legal Argentino
+            </h1>
+
+            <div class="text-xl text-gray-300 mb-8 font-light leading-relaxed">
+              Un análisis exhaustivo para el desarrollo de inteligencia artificial especializada en derecho contractual para estudios jurídicos en Argentina
+            </div>
+
+            <!-- Bento Grid Highlights -->
+            <div class="bento-grid">
+              <div class="bento-card">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-brain text-amber-500 text-2xl mr-3"></i>
+                  <h3 class="text-lg font-semibold">Modelo Recomendado</h3>
+                </div>
+                <p class="text-gray-300">SaulLM-7B con fine-tuning especializado y arquitectura RAG para máxima precisión legal</p>
+              </div>
+
+              <div class="bento-card">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-shield-alt text-amber-500 text-2xl mr-3"></i>
+                  <h3 class="text-lg font-semibold">Seguridad Garantizada</h3>
+                </div>
+                <p class="text-gray-300">Implementación de entornos privados y cumplimiento con la Ley 25.326 de Protección de Datos</p>
+              </div>
+
+              <div class="bento-card">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-chart-line text-amber-500 text-2xl mr-3"></i>
+                  <h3 class="text-lg font-semibold">Mercado Objetivo</h3>
+                </div>
+                <p class="text-gray-300">Estudios jurídicos argentinos de todos los tamaños especializados en derecho contractual</p>
+              </div>
+
+              <div class="bento-card">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-tools text-amber-500 text-2xl mr-3"></i>
+                  <h3 class="text-lg font-semibold">Tecnologías Clave</h3>
+                </div>
+                <p class="text-gray-300">Hugging Face Transformers, PyTorch, LoRA/QLoRA, DPO y bases de datos vectoriales</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12 text-center">Resumen Ejecutivo</h2>
+
+          <div class="max-w-4xl mx-auto">
+            <div class="quote-highlight">
+              <p class="text-lg leading-relaxed">
+                Para desarrollar una aplicación de chat con LLM para estudios jurídicos en Argentina, se recomienda un enfoque híbrido que combine el <strong>fine-tuning de un modelo de código abierto como SaulLM-7B</strong> con la técnica de <strong>Retrieval-Augmented Generation (RAG)</strong>.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+              <div class="metric-card">
+                <div class="text-3xl font-bold text-amber-500 mb-2">6 meses</div>
+                <div class="text-gray-300">Tiempo estimado para el desarrollo inicial</div>
+              </div>
+              <div class="metric-card">
+                <div class="text-3xl font-bold text-amber-500 mb-2">$95K-$198K</div>
+                <div class="text-gray-300">Inversión inicial estimada</div>
+              </div>
+              <div class="metric-card">
+                <div class="text-3xl font-bold text-amber-500 mb-2">24 semanas</div>
+                <div class="text-gray-300">Hasta lanzamiento controlado</div>
+              </div>
+            </div>
+
+            <div class="prose prose-lg text-gray-300 mt-12 space-y-6">
+              <p>
+                Este enfoque permitirá adaptar el modelo al derecho contractual argentino y acceder a información legal actualizada. La estrategia de fine-tuning debe incluir <strong>LoRA para eficiencia, instrucción para tareas específicas y DPO para alineación con preferencias humanas</strong>.
+              </p>
+
+              <p>
+                Es crucial recopilar y preparar un extenso corpus de datos legales argentinos (contratos, leyes, jurisprudencia) y utilizar herramientas como <strong>Hugging Face Transformers, PyTorch y TRL</strong>. La evaluación debe combinar métricas automatizadas (BERTScore, métricas RAG) con juicio humano experto.
+              </p>
+
+              <p>
+                La privacidad de los datos y el cumplimiento normativo (Ley 25.326) son prioritarios, requiriendo entornos de inferencia privados y políticas claras.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Market Research -->
+      <section id="market-research" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Investigación de Mercado</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Propuesta de Valor</h3>
+                <ul class="space-y-4 text-gray-300">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span><strong>Respuestas rápidas, precisas y contextualizadas</strong> sobre legislación, jurisprudencia y práctica contractual argentina</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span>Reducción del tiempo dedicado a investigación manual y minimización del riesgo de errores</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span><strong>Diferenciación a través de un modelo LLM fine-tuned específicamente con datos legales argentinos</strong></span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span>Priorización de <strong>privacidad y seguridad de los datos</strong> con opciones de despliegue controlado</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Público Objetivo</h3>
+                <div class="bg-gray-800 rounded-lg p-6">
+                  <p class="text-gray-300 mb-4">
+                    <strong>Estudios jurídicos de todos los tamaños ubicados en Argentina</strong>, con enfoque particular en aquellos que manejan derecho contractual:
+                  </p>
+                  <ul class="space-y-2 text-gray-300">
+                    <li>• Derecho comercial y societario</li>
+                    <li>• Derecho civil</li>
+                    <li>• Derecho laboral (en su faz contractual)</li>
+                    <li>• Derecho de consumo</li>
+                    <li>• Departamentos legales internos de empresas</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12">
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Modelo de Negocio</h3>
+              <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">
+                  <strong>Licencia de software por suscripción (SaaS)</strong> con planes escalonados:
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mt-6">
+                  <div class="text-center">
+                    <div class="bg-amber-500 text-gray-900 rounded-lg p-4 mb-3">
+                      <h4 class="font-semibold">Plan Básico</h4>
+                      <p class="text-sm">Estudios pequeños o individuales</p>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div class="bg-amber-500 text-gray-900 rounded-lg p-4 mb-3">
+                      <h4 class="font-semibold">Plan Profesional</h4>
+                      <p class="text-sm">Estudios medianos con más capacidades</p>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div class="bg-amber-500 text-gray-900 rounded-lg p-4 mb-3">
+                      <h4 class="font-semibold">Plan Empresarial</h4>
+                      <p class="text-sm">Grandes firmas con necesidades específicas</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Model Selection -->
+      <section id="model-selection" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Selección de Modelos LLM</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Criterios de Evaluación</h3>
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-700 rounded-lg p-6 text-center">
+                  <i class="fas fa-bullseye text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">Precisión Legal</h4>
+                  <p class="text-sm text-gray-300">Alta precisión en comprensión de consultas legales complejas y generación de respuestas relevantes</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6 text-center">
+                  <i class="fas fa-dollar-sign text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">Costo Eficiencia</h4>
+                  <p class="text-sm text-gray-300">Económicamente viable para fine-tuning e inferencia</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6 text-center">
+                  <i class="fas fa-cogs text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">Adaptabilidad</h4>
+                  <p class="text-sm text-gray-300">Capacidad de adaptación al marco legal argentino</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6 text-center">
+                  <i class="fas fa-server text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">Recursos</h4>
+                  <p class="text-sm text-gray-300">Requisitos de hardware manejables</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Característica</th>
+                    <th>Mistral 7B</th>
+                    <th>SaulLM-7B</th>
+                    <th>RoBERTalex / MEL</th>
+                    <th>Alternativas Comerciales</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tipo de Modelo</strong></td>
+                    <td>Código Abierto (Generativo)</td>
+                    <td>Código Abierto (Generativo, Adaptado Legal)</td>
+                    <td>Código Abierto (Encoder, Español Legal)</td>
+                    <td>Comercial (Generativo, Propietario)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Base/Arquitectura</strong></td>
+                    <td>Mistral 7B</td>
+                    <td>Mistral 7B</td>
+                    <td>RoBERTa / XLM-RoBERTa</td>
+                    <td>Varias (OpenAI, Google)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Especialización Legal</strong></td>
+                    <td>General</td>
+                    <td>Sí (principalmente inglés)</td>
+                    <td>Sí (español)</td>
+                    <td>Sí (general o específica)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Adaptabilidad a ARG</strong></td>
+                    <td>Requiere fine-tuning extensivo</td>
+                    <td>Requiere fine-tuning en español y datos ARG</td>
+                    <td>Requiere adaptación para generación</td>
+                    <td>Limitada, costosa o no disponible</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Costo (Licencia)</strong></td>
+                    <td>Gratuito (Apache 2.0 / MIT)</td>
+                    <td>Gratuito (MIT)</td>
+                    <td>Gratuito</td>
+                    <td>Alto (por token, suscripción)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Privacidad Datos</strong></td>
+                    <td>Alto (puede desplegarse localmente)</td>
+                    <td>Alto (puede desplegarse localmente)</td>
+                    <td>Alto (puede desplegarse localmente)</td>
+                    <td>Bajo (datos en servidores externos)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="quote-highlight mt-12">
+              <p class="text-lg">
+                <strong>Recomendación inicial:</strong> SaulLM-7B-Instruct emerge como candidato fuerte debido a su especialización legal, buen rendimiento en benchmarks, tamaño manejable y licencia permisiva. Aunque entrenado principalmente en inglés, su arquitectura y adaptación legal previa podrían facilitar un fine-tuning efectivo en español legal argentino.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Fine-Tuning Strategy -->
+      <section id="fine-tuning" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Fine-Tuning y Entrenamiento</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Enfoque Híbrido: Fine-Tuning + RAG</h3>
+              <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-gray-800 rounded-lg p-6">
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-brain text-amber-500 mr-3"></i>
+                    Fine-Tuning del LLM
+                  </h4>
+                  <ul class="space-y-3 text-gray-300">
+                    <li>• Adaptación del conocimiento general a particularidades del derecho argentino</li>
+                    <li>• Entrenamiento en conjunto de datos cuidadosamente curado</li>
+                    <li>• Comprensión profunda de terminología y estructura legal local</li>
+                    <li>• Técnicas: SFT (Supervised Fine-Tuning) con LoRA/QLoRA</li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6">
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-search text-amber-500 mr-3"></i>
+                    Retrieval-Augmented Generation (RAG)
+                  </h4>
+                  <ul class="space-y-3 text-gray-300">
+                    <li>• Consulta de base de conocimientos externa y actualizable</li>
+                    <li>• Mejora de precisión y actualidad de respuestas</li>
+                    <li>• Capacidad de citar fuentes legales</li>
+                    <li>• Mitigación de alucinaciones del modelo</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Arquitectura del Sistema</h3>
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  flowchart TD
+                  A[&#34;Consulta del Usuario&#34;] --&gt; B{&#34;Sistema RAG&#34;}
+                  B --&gt; C[&#34;Recuperación Semántica&#34;]
+                  C --&gt; D[&#34;Base de Datos Vectorial&#34;]
+                  D --&gt; E[&#34;Documentos Legales Relevantes&#34;]
+                  E --&gt; F[&#34;LLM Fine-Tuned&#34;]
+                  F --&gt; G[&#34;Generación de Respuesta&#34;]
+                  G --&gt; H[&#34;Respuesta Fundamentada&#34;]
+                  H --&gt; I[&#34;Citas y Fuentes&#34;]
+
+                  style A fill:#1f2937,stroke:#f59e0b,stroke-width:2px,color:#fff
+                  style F fill:#374151,stroke:#f59e0b,stroke-width:2px,color:#fff
+                  style H fill:#7c3aed,stroke:#a855f7,stroke-width:2px,color:#fff
+                  style D fill:#059669,stroke:#10b981,stroke-width:2px,color:#fff
+                </div>
+              </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Recopilación de Datos</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-500 mb-2">Legislación</h4>
+                    <p class="text-gray-300 text-sm">Código Civil y Comercial, leyes específicas, decretos del SAIJ y boletines oficiales</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-500 mb-2">Jurisprudencia</h4>
+                    <p class="text-gray-300 text-sm">Fallos de la Corte Suprema, cámaras federales y nacionales en materia contractual</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-500 mb-2">Doctrina</h4>
+                    <p class="text-gray-300 text-sm">Artículos académicos, libros y comentarios de juristas argentinos</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-500 mb-2">Contratos</h4>
+                    <p class="text-gray-300 text-sm">Diversos tipos de contratos (compraventa, locación, servicios) debidamente anonimizados</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Técnicas de Fine-Tuning</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-500 mb-2">LoRA / QLoRA</h4>
+                    <p class="text-gray-300 text-sm">Parameter-Efficient Fine-Tuning para reducir costos computacionales y requisitos de GPU</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-500 mb-2">Instrucción (SFT)</h4>
+                    <p class="text-gray-300 text-sm">Supervised Fine-Tuning con pares de instrucción-respuesta para tareas legales específicas</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-500 mb-2">DPO</h4>
+                    <p class="text-gray-300 text-sm">Direct Preference Optimization para alineación con preferencias humanas y mejora de factualidad</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12">
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Herramientas y Frameworks</h3>
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-hugging-face text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">Hugging Face</h4>
+                  <p class="text-sm text-gray-300">Transformers, PEFT, TRL, datasets</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-fire text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">PyTorch</h4>
+                  <p class="text-sm text-gray-300">Framework de aprendizaje profundo</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-link text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">LangChain</h4>
+                  <p class="text-sm text-gray-300">Integración LLM y RAG</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-database text-amber-500 text-3xl mb-3"></i>
+                  <h4 class="font-semibold mb-2">Bases Vectoriales</h4>
+                  <p class="text-sm text-gray-300">FAISS, ChromaDB, Milvus</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Application Development -->
+      <section id="application-development" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Desarrollo de la Aplicación</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Arquitectura General</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">Front-end</h4>
+                    <p class="text-gray-300 text-sm">Interfaz web intuitiva y responsiva diseñada específicamente para abogados, con React.js/Vue.js</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">Back-end</h4>
+                    <p class="text-gray-300 text-sm">Lógica de negocio, autenticación, comunicación con LLM. Python con FastAPI/Django</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">API</h4>
+                    <p class="text-gray-300 text-sm">RESTful como intermediario entre front-end y back-end</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">LLM + RAG</h4>
+                    <p class="text-gray-300 text-sm">Núcleo del sistema de generación de respuestas con base de conocimientos legal</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Stack Tecnológico</h3>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <div class="space-y-4">
+                    <div>
+                      <h4 class="font-semibold text-gray-200 mb-2">Front-end:</h4>
+                      <p class="text-gray-300 text-sm">React.js/Vue.js, TypeScript, Tailwind CSS</p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-200 mb-2">Back-end:</h4>
+                      <p class="text-gray-300 text-sm">Python, FastAPI/Django, PostgreSQL/MySQL</p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-200 mb-2">ML/AI:</h4>
+                      <p class="text-gray-300 text-sm">PyTorch, Hugging Face Transformers, LangChain, LlamaIndex</p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-200 mb-2">Despliegue:</h4>
+                      <p class="text-gray-300 text-sm">Docker, Kubernetes, AWS/Azure/GCP</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Funcionalidades Clave</h3>
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-comments text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Chatbot de Consulta Legal</h4>
+                  <p class="text-gray-300 text-sm">Interfaz de chat intuitiva para preguntas en lenguaje natural sobre legislación y jurisprudencia argentina</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-file-contract text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Análisis de Contratos</h4>
+                  <p class="text-gray-300 text-sm">Carga de contratos (PDF, DOCX) para análisis, identificación de cláusulas clave y riesgos potenciales</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-edit text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Generación de Cláusulas</h4>
+                  <p class="text-gray-300 text-sm">Asistencia en redacción de cláusulas contractuales específicas adaptadas al marco legal argentino</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-search text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Búsqueda Semántica</h4>
+                  <p class="text-gray-300 text-sm">Búsquedas profundas en la base de conocimientos legal superando las limitaciones de palabras clave</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-compress-alt text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Resumen de Documentos</h4>
+                  <p class="text-gray-300 text-sm">Resumen de sentencias judiciales, leyes extensas o artículos de doctrina</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-history text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Gestión de Historial</h4>
+                  <p class="text-gray-300 text-sm">Almacenamiento del historial de consultas y respuestas para revisión y exportación</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12">
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Diseño UI/UX para Abogados</h3>
+              <div class="bg-gray-700 rounded-lg p-6">
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 class="font-semibold text-amber-400 mb-4">Principios de Diseño</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                      <li>• Claridad, eficiencia y profesionalidad</li>
+                      <li>• Interfaz minimalista enfocada en la conversación</li>
+                      <li>• Visualización clara de fuentes y citas</li>
+                      <li>• Navegación intuitiva y accesibilidad</li>
+                      <li>• Lenguaje profesional acorde al ámbito jurídico</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-amber-400 mb-4">Experiencia del Usuario</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                      <li>• Formato que distingue preguntas y respuestas</li>
+                      <li>• Campo de entrada robusto para preguntas extensas</li>
+                      <li>• Posibilidad de adjuntar documentos</li>
+                      <li>• Historial de consultas fácilmente accesible</li>
+                      <li>• Mecanismo sencillo para feedback</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Privacy &amp; Security -->
+      <section id="privacy-security" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Privacidad y Seguridad</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="quote-highlight mb-12">
+              <p class="text-lg">
+                La <strong>confidencialidad y protección de los datos sensibles</strong> ingresados por los abogados es una prioridad absoluta, dada la naturaleza de la información legal.
+              </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Garantías de Confidencialidad</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2 flex items-center">
+                      <i class="fas fa-shield-alt mr-2"></i>
+                      Política de Privacidad Transparente
+                    </h4>
+                    <p class="text-gray-300 text-sm">Detalle claro de cómo se manejan, procesan y almacenan los datos</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2 flex items-center">
+                      <i class="fas fa-ban mr-2"></i>
+                      No Entrenamiento con Datos de Usuarios
+                    </h4>
+                    <p class="text-gray-300 text-sm">Los datos de usuarios no se utilizarán para entrenar modelos de terceros sin consentimiento explícito</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2 flex items-center">
+                      <i class="fas fa-user-secret mr-2"></i>
+                      Privacidad por Diseño
+                    </h4>
+                    <p class="text-gray-300 text-sm">Incorporación de medidas de seguridad desde las primeras etapas del desarrollo</p>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2 flex items-center">
+                      <i class="fas fa-file-signature mr-2"></i>
+                      Acuerdos de Confidencialidad
+                    </h4>
+                    <p class="text-gray-300 text-sm">NDA con clientes que así lo requieran</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Entornos de Inferencia Privados</h3>
+                <div class="bg-gray-800 rounded-lg p-6">
+                  <div class="text-center mb-6">
+                    <i class="fas fa-server text-amber-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold">Despliegue Controlado</h4>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-start">
+                      <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h5 class="font-semibold text-gray-200">On-Premise</h5>
+                        <p class="text-gray-300 text-sm">Despliegue en la infraestructura del estudio jurídico</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h5 class="font-semibold text-gray-200">Nube Privada Virtual</h5>
+                        <p class="text-gray-300 text-sm">VPC dedicada y aislada para cada cliente</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h5 class="font-semibold text-gray-200">Control Total</h5>
+                        <p class="text-gray-300 text-sm">Datos confidenciales nunca salen del entorno controlado</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Medidas de Seguridad</h3>
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-lock text-amber-500 text-3xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Cifrado</h4>
+                  <p class="text-gray-300 text-sm">Datos en tránsito (TLS/SSL) y en reposo</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-users-cog text-amber-500 text-3xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">RBAC</h4>
+                  <p class="text-gray-300 text-sm">Control de acceso basado en roles granular</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-key text-amber-500 text-3xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Autenticación</h4>
+                  <p class="text-gray-300 text-sm">Autenticación de dos factores (2FA)</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 text-center">
+                  <i class="fas fa-eye text-amber-500 text-3xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Monitoreo</h4>
+                  <p class="text-gray-300 text-sm">Monitoreo y auditoría de seguridad continua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Regulatory Compliance -->
+      <section id="regulatory-compliance" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Cumplimiento Normativo</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Ley 25.326 de Protección de Datos Personales</h3>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <div class="space-y-4">
+                    <div class="flex items-start">
+                      <i class="fas fa-gavel text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h4 class="font-semibold text-gray-200">Consentimiento Informado</h4>
+                        <p class="text-gray-300 text-sm">Del titular de los datos para su recopilación y tratamiento</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-bullseye text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h4 class="font-semibold text-gray-200">Finalidad Específica</h4>
+                        <p class="text-gray-300 text-sm">Legítima del tratamiento de datos</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-check-double text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h4 class="font-semibold text-gray-200">Calidad y Veracidad</h4>
+                        <p class="text-gray-300 text-sm">De los datos personales</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-shield-alt text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h4 class="font-semibold text-gray-200">Seguridad y Confidencialidad</h4>
+                        <p class="text-gray-300 text-sm">En el manejo de datos personales</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Otras Regulaciones Relevantes</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">Ley 24.240</h4>
+                    <p class="text-gray-300 text-sm">Defensa del Consumidor - Derechos y obligaciones en relaciones de consumo</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">Ley 25.506</h4>
+                    <p class="text-gray-300 text-sm">Firma Digital - Regulaciones para firma digital y comercio electrónico</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">Protección de Menores</h4>
+                    <p class="text-gray-300 text-sm">Disposiciones específicas para protección de datos de menores</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Estrategias de Cumplimiento</h3>
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-clipboard-check text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Evaluación de Impacto</h4>
+                  <p class="text-gray-300 text-sm">EIPD para identificar y mitigar riesgos asociados al tratamiento de datos personales</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-file-alt text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Políticas Internas</h4>
+                  <p class="text-gray-300 text-sm">Procedimientos de protección de datos, retención y eliminación</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-user-secret text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Anonimización</h4>
+                  <p class="text-gray-300 text-sm">Técnicas de anonimización y seudonimización de datos</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-handshake text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Contratos</h4>
+                  <p class="text-gray-300 text-sm">Cláusulas específicas con proveedores externos</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-graduation-cap text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Capacitación</h4>
+                  <p class="text-gray-300 text-sm">Del personal en protección de datos y políticas internas</p>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <i class="fas fa-balance-scale text-amber-500 text-2xl mb-4"></i>
+                  <h4 class="font-semibold mb-3">Asesoramiento</h4>
+                  <p class="text-gray-300 text-sm">Legal especializado continuo en protección de datos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Quality Evaluation -->
+      <section id="quality-evaluation" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Evaluación de Calidad y Precisión</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="quote-highlight mb-12">
+              <p class="text-lg">
+                La evaluación de la calidad y precisión del modelo debe combinar <strong>métricas automatizadas con una validación rigurosa por parte de expertos en derecho</strong>. La confianza es fundamental en la adopción de herramientas de IA por parte de abogados.
+              </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Métricas de Evaluación</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">Métricas Objetivas</h4>
+                    <ul class="text-gray-300 text-sm space-y-1">
+                      <li>• ROUGE, BLEU, BERTScore</li>
+                      <li>• Precisión (Accuracy) y Tasa de Error</li>
+                      <li>• Similitud Semántica</li>
+                      <li>• Robustez y Tiempo de Respuesta</li>
+                    </ul>
+                  </div>
+                  <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-2">Métricas RAG</h4>
+                    <ul class="text-gray-300 text-sm space-y-1">
+                      <li>• Faithfulness (Fidelidad)</li>
+                      <li>• Answer Relevance (Relevancia)</li>
+                      <li>• Contextual Precision/Recall</li>
+                      <li>• Contextual Relevancy</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Evaluación con Expertos</h3>
+                <div class="bg-gray-800 rounded-lg p-6">
+                  <div class="space-y-4">
+                    <div class="flex items-start">
+                      <i class="fas fa-user-tie text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h4 class="font-semibold text-gray-200">Evaluación por Expertos</h4>
+                        <p class="text-gray-300 text-sm">Abogados especializados califican respuestas en escalas Likert</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-search text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h4 class="font-semibold text-gray-200">Análisis de Errores</h4>
+                        <p class="text-gray-300 text-sm">Análisis sistemático de alucinaciones, información incompleta</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-sync-alt text-amber-500 mt-1 mr-3"></i>
+                      <div>
+                        <h4 class="font-semibold text-gray-200">Iteración Continua</h4>
+                        <p class="text-gray-300 text-sm">Feedback de expertos para mejorar el modelo</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gray-800 rounded-lg p-8">
+              <h3 class="text-2xl font-semibold mb-6 text-amber-500">Benchmarking</h3>
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                  <div class="bg-gray-700 rounded-lg p-4 mb-3">
+                    <i class="fas fa-robot text-amber-500 text-2xl mb-2"></i>
+                    <h4 class="font-semibold">LLMs Generales</h4>
+                  </div>
+                  <p class="text-gray-300 text-sm">Comparación con GPT-4, Claude, Mistral sin fine-tuning</p>
+                </div>
+                <div class="text-center">
+                  <div class="bg-gray-700 rounded-lg p-4 mb-3">
+                    <i class="fas fa-balance-scale text-amber-500 text-2xl mb-2"></i>
+                    <h4 class="font-semibold">IA Legal Existente</h4>
+                  </div>
+                  <p class="text-gray-300 text-sm">LEXIUS, Law GPT de IAra Labs</p>
+                </div>
+                <div class="text-center">
+                  <div class="bg-gray-700 rounded-lg p-4 mb-3">
+                    <i class="fas fa-book text-amber-500 text-2xl mb-2"></i>
+                    <h4 class="font-semibold">Métodos Tradicionales</h4>
+                  </div>
+                  <p class="text-gray-300 text-sm">Investigación manual, bases de datos jurídicas</p>
+                </div>
+                <div class="text-center">
+                  <div class="bg-gray-700 rounded-lg p-4 mb-3">
+                    <i class="fas fa-code-branch text-amber-500 text-2xl mb-2"></i>
+                    <h4 class="font-semibold">Soluciones Abiertas</h4>
+                  </div>
+                  <p class="text-gray-300 text-sm">Comparación con otros modelos adaptados</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Implementation Roadmap -->
+      <section id="implementation-roadmap" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Plan de Implementación</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <!-- Timeline -->
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold mb-8 text-amber-500">Cronograma Estimado</h3>
+              <div class="relative">
+                <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-amber-500"></div>
+
+                <div class="space-y-8">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">1</div>
+                    <div class="ml-6">
+                      <h4 class="text-lg font-semibold text-amber-400">Fase 1: Investigación y Planificación</h4>
+                      <p class="text-gray-300 text-sm mb-2">Semanas 1-4</p>
+                      <p class="text-gray-300">Definición de requisitos, investigación de modelos LLM, diseño de arquitectura, plan de recopilación de datos, plan de fine-tuning, plan de evaluación, plan de privacidad</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">2</div>
+                    <div class="ml-6">
+                      <h4 class="text-lg font-semibold text-amber-400">Fase 2: Desarrollo del Modelo y RAG</h4>
+                      <p class="text-gray-300 text-sm mb-2">Semanas 5-12</p>
+                      <p class="text-gray-300">Recopilación y preparación de datos, fine-tuning del LLM, desarrollo del sistema RAG, evaluación inicial</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">3</div>
+                    <div class="ml-6">
+                      <h4 class="text-lg font-semibold text-amber-400">Fase 3: Desarrollo de la Aplicación</h4>
+                      <p class="text-gray-300 text-sm mb-2">Semanas 13-20</p>
+                      <p class="text-gray-300">Back-end y API, front-end, implementación de funcionalidades clave, integración y pruebas</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">4</div>
+                    <div class="ml-6">
+                      <h4 class="text-lg font-semibold text-amber-400">Fase 4: Evaluación Exhaustiva</h4>
+                      <p class="text-gray-300 text-sm mb-2">Semanas 21-24</p>
+                      <p class="text-gray-300">Evaluación cualitativa con expertos, benchmarking, ajustes y mejoras, pruebas de seguridad</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">5</div>
+                    <div class="ml-6">
+                      <h4 class="text-lg font-semibold text-amber-400">Fase 5: Lanzamiento</h4>
+                      <p class="text-gray-300 text-sm mb-2">A partir de Semana 25</p>
+                      <p class="text-gray-300">Despliegue, lanzamiento controlado, soporte y mantenimiento, monitoreo y mejora continua</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Recursos Necesarios</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-3">Equipo</h4>
+                    <ul class="text-gray-300 text-sm space-y-2">
+                      <li>• Líder de Proyecto/Product Manager (1)</li>
+                      <li>• Expertos en ML/IA (2-3)</li>
+                      <li>• Desarrolladores Back-end (1-2)</li>
+                      <li>• Desarrollador Front-end (1)</li>
+                      <li>• Abogados Expertos (2-3, consultores)</li>
+                      <li>• Especialista en Ciberseguridad (1, consultor)</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-amber-400 mb-3">Presupuesto (6 meses)</h4>
+                    <div class="space-y-2 text-gray-300 text-sm">
+                      <div class="flex justify-between">
+                        <span>Salarios y Honorarios:</span>
+                        <span>$80K-$150K</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Infraestructura y Herramientas:</span>
+                        <span>$8K-$28K</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Recopilación de Datos:</span>
+                        <span>$3K-$10K</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Gastos Generales:</span>
+                        <span>$5K-$10K</span>
+                      </div>
+                      <div class="flex justify-between border-t border-gray-600 pt-2 font-semibold">
+                        <span>Total Estimado:</span>
+                        <span class="text-amber-400">$95K-$198K</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Hitos Principales</h3>
+                <div class="space-y-4">
+                  <div class="bg-gray-700 rounded-lg p-4 border-l-4 border-amber-500">
+                    <h4 class="font-semibold text-amber-400 mb-2">Hito 1: Plan de Proyecto Aprobado</h4>
+                    <p class="text-gray-300 text-sm">Selección de modelo LLM, arquitectura, plan de datos, plan de fine-tuning, plan de evaluación, plan de privacidad</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4 border-l-4 border-amber-500">
+                    <h4 class="font-semibold text-amber-400 mb-2">Hito 2: Modelo LLM Fine-Tuned</h4>
+                    <p class="text-gray-300 text-sm">Primera versión del modelo especializado y RAG operativo con datos iniciales</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4 border-l-4 border-amber-500">
+                    <h4 class="font-semibold text-amber-400 mb-2">Hito 3: Aplicación Alfa Funcional</h4>
+                    <p class="text-gray-300 text-sm">Back-end, API y Front-end integrados con funcionalidades clave implementadas</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4 border-l-4 border-amber-500">
+                    <h4 class="font-semibold text-amber-400 mb-2">Hito 4: Aplicación Beta Validada</h4>
+                    <p class="text-gray-300 text-sm">Evaluación cualitativa y cuantitativa satisfactoria, ajustes realizados, pruebas de seguridad completadas</p>
+                  </div>
+                  <div class="bg-gray-700 rounded-lg p-4 border-l-4 border-amber-500">
+                    <h4 class="font-semibold text-amber-400 mb-2">Hito 5: Lanzamiento Controlado</h4>
+                    <p class="text-gray-300 text-sm">Despliegue en producción y lanzamiento a grupo piloto de estudios jurídicos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Risk Analysis -->
+      <section id="risk-analysis" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12">Análisis de Riesgos</h2>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Riesgo</th>
+                    <th>Impacto</th>
+                    <th>Probabilidad</th>
+                    <th>Estrategia de Mitigación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Calidad Insuficiente de Datos</strong></td>
+                    <td>Modelo impreciso, respuestas erróneas</td>
+                    <td>Media</td>
+                    <td>Inversión en curación de datos con expertos legales. Procesos rigurosos de validación</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Fine-Tuning Inefectivo</strong></td>
+                    <td>Modelo no se adapta al dominio legal ARG</td>
+                    <td>Media</td>
+                    <td>Experimentación con diferentes técnicas. Iteración basada en evaluación rigurosa</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Alucinaciones del Modelo</strong></td>
+                    <td>Información legal incorrecta, pérdida de confianza</td>
+                    <td>Alta</td>
+                    <td>Implementación de RAG. Fine-tuning con DPO. Evaluación exhaustiva con expertos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rendimiento Lento</strong></td>
+                    <td>Mala experiencia de usuario</td>
+                    <td>Media</td>
+                    <td>Optimización del modelo (cuantización). Hardware adecuado. UI que maneje latencia</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Problemas de Escalabilidad</strong></td>
+                    <td>Aplicación no soporta muchos usuarios</td>
+                    <td>Baja</td>
+                    <td>Arquitectura escalable (microservicios). Pruebas de carga. Infraestructura cloud</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Filtración de Datos</strong></td>
+                    <td>Daño reputacional, sanciones legales</td>
+                    <td>Media</td>
+                    <td>Medidas de seguridad robustas. Opción de despliegue privado. Cumplimiento Ley 25.326</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Falta de Adopción</strong></td>
+                    <td>Fracaso comercial</td>
+                    <td>Media</td>
+                    <td>Diseño centrado en usuario. Involucramiento de abogados desde fases tempranas</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cambios Legislativos</strong></td>
+                    <td>Modelo desactualizado</td>
+                    <td>Alta</td>
+                    <td>Sistema RAG actualizable. Proceso continuo de recopilación de datos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sobrecostos</strong></td>
+                    <td>Impacto financiero, retraso en lanzamiento</td>
+                    <td>Media</td>
+                    <td>Planificación detallada. Gestión ágil de proyectos. Buffer de contingencia</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Competencia</strong></td>
+                    <td>Dificultad para penetrar el mercado</td>
+                    <td>Media</td>
+                    <td>Diferenciación clara (especialización en derecho ARG). Propuesta de valor superior</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mt-12 grid md:grid-cols-3 gap-8">
+              <div class="bg-gray-800 rounded-lg p-6 text-center">
+                <i class="fas fa-exclamation-triangle text-red-400 text-3xl mb-4"></i>
+                <h4 class="font-semibold text-red-400 mb-2">Riesgos Altos</h4>
+                <p class="text-gray-300 text-sm">Alucinaciones del modelo y cambios legislativos requieren atención prioritaria y mitigación proactiva</p>
+              </div>
+              <div class="bg-gray-800 rounded-lg p-6 text-center">
+                <i class="fas fa-balance-scale text-yellow-400 text-3xl mb-4"></i>
+                <h4 class="font-semibold text-yellow-400 mb-2">Riesgos Medios</h4>
+                <p class="text-gray-300 text-sm">Calidad de datos, fine-tuning, privacidad y adopción requieren monitoreo constante</p>
+              </div>
+              <div class="bg-gray-800 rounded-lg p-6 text-center">
+                <i class="fas fa-check-circle text-green-400 text-3xl mb-4"></i>
+                <h4 class="font-semibold text-green-400 mb-2">Riesgos Bajos</h4>
+                <p class="text-gray-300 text-sm">Escalabilidad tiene menor probabilidad pero requiere planificación adecuada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Conclusion -->
+      <section id="conclusion" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-serif font-bold mb-12 text-center">Conclusión</h2>
+
+          <div class="max-w-4xl mx-auto">
+            <div class="quote-highlight mb-12">
+              <p class="text-xl leading-relaxed">
+                El desarrollo de una aplicación de chat con LLM especializada en derecho contractual para estudios jurídicos argentinos representa una <strong>oportunidad estratégica significativa</strong>, combinando tecnología de vanguardia con necesidades del mercado legal local.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Puntos Clave</h3>
+                <ul class="space-y-4 text-gray-300">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span>El enfoque híbrido de <strong>fine-tuning + RAG</strong> ofrece el mejor balance entre especialización y actualidad</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span><strong>SaulLM-7B</strong> emerge como el modelo base óptimo por su especialización legal y licencia permisiva</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span>Las técnicas de <strong>LoRA, instrucción y DPO</strong> permiten fine-tuning eficiente y alineado</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                    <span>La <strong>privacidad y seguridad</strong> son prioritarias, con opciones de despliegue privado</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-semibold mb-6 text-amber-500">Recomendaciones</h3>
+                <div class="bg-gray-700 rounded-lg p-6">
+                  <ol class="space-y-3 text-gray-300">
+                    <li class="flex items-start">
+                      <span class="bg-amber-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</span>
+                      <span>Iniciar con un <strong>proyecto piloto</strong> de 6 meses con inversión estimada de $95K-$198K</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="bg-amber-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</span>
+                      <span>Construir equipo multidisciplinario con <strong>expertos en ML, desarrollo y derecho argentino</strong></span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="bg-amber-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</span>
+                      <span>Priorizar <strong>recopilación de datos legales argentinos</strong> de alta calidad</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="bg-amber-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">4</span>
+                      <span>Implementar <strong>evaluación híbrida</strong> (métricas automatizadas + juicio humano experto)</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="bg-amber-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">5</span>
+                      <span>Garantizar <strong>cumplimiento normativo</strong> desde el diseño (Ley 25.326)</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <div class="bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg p-8">
+                <h3 class="text-2xl font-semibold mb-4 text-amber-500">Visión a Futuro</h3>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  Esta aplicación tiene el potencial de <strong>transformar la práctica legal en Argentina</strong>, ofreciendo a los abogados una herramienta poderosa que combine la inteligencia artificial con el expertise legal local. El éxito dependerá de la ejecución cuidadosa del plan propuesto, la atención a los detalles de privacidad y seguridad, y la adaptación continua a las necesidades del mercado legal argentino.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 py-12 border-t border-gray-700">
+        <div class="container mx-auto px-6 text-center">
+          <p class="text-gray-400">
+            Plan estratégico para desarrollo de aplicación de chat LLM en el sector legal argentino
+          </p>
+          <p class="text-gray-500 text-sm mt-2">
+            Basado en investigación exhaustiva de modelos, técnicas y regulaciones aplicables
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid with custom configuration
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#1f2937',
+                primaryTextColor: '#f8fafc',
+                primaryBorderColor: '#f59e0b',
+                lineColor: '#f59e0b',
+                secondaryColor: '#374151',
+                tertiaryColor: '#059669',
+                background: '#1f2937',
+                mainBkg: '#1f2937',
+                secondBkg: '#374151',
+                tertiaryBkg: '#059669',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Call the function to initialize the controls
+        initializeMermaidControls();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const sidebar = document.querySelector('.sidebar-nav');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.querySelector('.sidebar-nav');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('open');
+            overlay.classList.add('hidden');
+        }
+
+        document.getElementById('mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
+        document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+
+        // Close the mobile menu when window is resized to desktop size
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                closeMobileMenu();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                // Close mobile menu if open
+                const sidebar = document.querySelector('.sidebar-nav');
+                if (sidebar.classList.contains('open')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
